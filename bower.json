@@ -1,9 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
+  "name": "tp2-idb-2015-2",
+  "description": "TP 2 de IBD",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
-  "license": "MIT",
+  "homepage": "https://github.com/tadeurahian/tp2-ibd-2015-2",
   "private": true,
   "dependencies": {
     "angular": "1.4.8",
@@ -16,6 +15,7 @@
     "angular-ui-mask": "1.6.3"
   },
   "resolutions": {
-    "jquery": "1.11.3"
+    "jquery": "1.11.3",
+    "angular": "1.4.8"
   }
 }
