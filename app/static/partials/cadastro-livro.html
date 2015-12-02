@@ -5,21 +5,21 @@
   <div class="row">
     <div class="small-4 columns">
       <label>Título
-        <input type="text" ng-model="dados.titulo">
+        <input type="text" ng-model="dados.book.titulo">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="small-4 columns">
       <label>Categoria
-        <input type="text" maxlength="11" ng-model="dados.categoria">
+        <input type="text" maxlength="11" ng-model="dados.book.categoria">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="small-4 columns">
       <label>Editora
-        <input type="text" ng-model="dados.editora">
+        <input type="text" ng-model="dados.book.editora">
       </label>
     </div>
   </div>
@@ -47,7 +47,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="autor in dados.autores">
-                <td>{{ autor.nome }}</td>
+                <td>{{ autor }}</td>
                 <td class="exclude-button">
                   <button type="button" class="button alert small" ng-click="removerAutor($index)"><i class="fa fa-minus"></i></button>
                 </td>

@@ -18,9 +18,11 @@ ibdApp.controller('MainCtrl', function ($scope, $rootScope) {
   $scope.ticker.message = '';
   $scope.ticker.type = '';
   $scope.ticker.show = false;
+
+  $rootScope.api = 'http://localhost:3000';
 });
 
-ibdApp.controller('CadastroPessoaCtrl', function ($scope, $rootScope) {
+ibdApp.controller('CadastroPessoaCtrl', function ($scope, $rootScope, Pessoa) {
   'use strict';
 
   $scope.limparDados = function () {
@@ -32,35 +34,47 @@ ibdApp.controller('CadastroPessoaCtrl', function ($scope, $rootScope) {
   };
 
   $scope.salvar = function () {
-    $rootScope.exibirTicker('teste', 'success');
+    Pessoa.cadastrar($scope.dados);
+
+    $scope.limparDados();
   };
 
   $scope.dados = {};
   $scope.limparDados();
 });
 
-ibdApp.controller('CadastroLivroCtrl', function ($scope, $rootScope) {
+ibdApp.controller('CadastroLivroCtrl', function ($scope, $rootScope, Livro) {
   'use strict';
 
   $scope.limparDados = function () {
-    $scope.dados.titulo = '';
-    $scope.dados.editora = '';
-    $scope.dados.categoria = '';
+    $scope.dados = {};
+    $scope.autor = {};
+    $scope.dados.book = {};
     $scope.dados.autores = [];
-    $scope.autor.nome = '';
+
+    $scope.dados.book.titulo = '';
+    $scope.dados.book.categoria = '';
+    $scope.dados.book.editora = '';
   };
 
   $scope.adicionarAutor = function () {
-    $scope.dados.autores.push({
-      nome: $scope.autor.nome
-    });
+    $scope.dados.autores.push($scope.autor.nome);
   };
 
   $scope.removerAutor = function (index) {
     $scope.dados.autores.splice(index, 1);
   };
 
-  $scope.dados = {};
-  $scope.autor = {};
+  $scope.salvar = function () {
+    Livro.cadastrar($scope.dados);
+  };
+
   $scope.limparDados();
+});
+
+ibdApp.controller('DoacaoCtrl', function ($scope, $rootScope) {
+  'use strict';
+
+  $scope.dados = {};
+  $scope.livro = {};
 });
