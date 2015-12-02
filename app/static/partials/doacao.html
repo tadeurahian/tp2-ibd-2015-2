@@ -1,0 +1,74 @@
+<div ng-controller="DoacaoCtrl">
+  <div class="row column">
+    <h3 class="subheader">Doação de Livros</h3>
+  </div>
+  <div class="row">
+    <div class="small-4 columns">
+      <label>Pessoa
+        <select ng-model="dados.pessoa">
+          <option ng-repeat="pessoa in pessoas" value="{{ pessoa.id_pessoa }}">
+            {{ pessoa.nome }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 columns">
+      <label>Data de Devolução
+        <input type="text" ng-model="dados.data_devolucao">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h6 class="subheader"> Livros </h6>
+      <div class="row">
+        <div class="small-4 columns">
+          <label> Livro
+            <select ng-model="livro.id">
+              <option ng-repeat="livro in livros" value="{{ livro.id_livro }}">
+                {{ livro.titulo }}
+              </option>
+            </select>
+          </label>
+        </div>
+        <div class="small-2 columns">
+          <label> Edição
+            <input type="text" ng-model="livro.edicao">
+          </label>
+        </div>
+        <div class="small-2 columns end">
+          <button type="button" class="success button add-button small" ng-click="adicionarLivro()"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          <table>
+            <thead>
+              <tr>
+                <th width="350">Nome</th>
+                <th width="30"> Edição </th>
+                <th>Excluir</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="livro in dados.livros">
+                <td>{{ livro.titulo }}</td>
+                <td>{{ livro.edicao }}</td>
+                <td class="exclude-button">
+                  <button type="button" class="button alert small" ng-click="removerLivro($index)"><i class="fa fa-minus"></i></button>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-offset-8 small-4 columns">
+      <button type="button" class="alert button" ng-click="limparDados()">Limpar</button>
+      <button type="button" class="success button" ng-click="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>

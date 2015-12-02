@@ -13,7 +13,7 @@ ibdApp.directive('ibdTopBar', function () {
   };
 });
 
-ibdApp.directive('ibdTicker', function ($rootScope) {
+ibdApp.directive('ibdTicker', function ($rootScope, $timeout) {
   'use strict';
 
   return {
@@ -31,6 +31,10 @@ ibdApp.directive('ibdTicker', function ($rootScope) {
       scope.esconderTicker = $rootScope.esconderTicker;
 
       scope.$watch('show', function (newVal, oldVal) {
+        if(oldVal === true) {
+          $ticker.hide();
+        }
+
         if(newVal === true) {
           $ticker.fadeIn();
         } else {
@@ -44,6 +48,8 @@ ibdApp.directive('ibdTicker', function ($rootScope) {
           $ticker.removeClass('success');
           $ticker.addClass('error');
         }
+
+        $timeout(function () { scope.esconderTicker(); }, 3000);
       });
     }
   };

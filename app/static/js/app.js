@@ -18,6 +18,11 @@ config(['$routeProvider', function($routeProvider) {
     controller: 'CadastroLivroCtrl'
   });
 
+  $routeProvider.when('/doacao', {
+    templateUrl: 'static/partials/doacao.html',
+    controller: 'DoacaoCtrl'
+  });
+
   $(document).ready(function () {
     $(document).foundation();
   });

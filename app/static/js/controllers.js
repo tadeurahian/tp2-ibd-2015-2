@@ -49,12 +49,7 @@ ibdApp.controller('CadastroLivroCtrl', function ($scope, $rootScope, Livro) {
   $scope.limparDados = function () {
     $scope.dados = {};
     $scope.autor = {};
-    $scope.dados.book = {};
     $scope.dados.autores = [];
-
-    $scope.dados.book.titulo = '';
-    $scope.dados.book.categoria = '';
-    $scope.dados.book.editora = '';
   };
 
   $scope.adicionarAutor = function () {
@@ -67,14 +62,48 @@ ibdApp.controller('CadastroLivroCtrl', function ($scope, $rootScope, Livro) {
 
   $scope.salvar = function () {
     Livro.cadastrar($scope.dados);
+    $scope.limparDados();
   };
 
   $scope.limparDados();
 });
 
-ibdApp.controller('DoacaoCtrl', function ($scope, $rootScope) {
+ibdApp.controller('DoacaoCtrl', function ($scope, $rootScope, Pessoa, Livro) {
   'use strict';
 
-  $scope.dados = {};
-  $scope.livro = {};
+  var obterTituloLivro = function (id) {
+    for(var x = 0; x < $scope.livros.length; x++) {
+      if($scope.livros[x].id_livro === parseInt(id)) {
+        return $scope.livros[x].titulo;
+      }
+    }
+  }
+
+  $scope.limparDados = function () {
+    $scope.livro = {};
+    $scope.dados = {};
+    $scope.dados.livros = [];
+  };
+
+  $scope.adicionarLivro = function () {
+    $scope.dados.livros.push({
+      id_livro: $scope.livro.id,
+      edicao: $scope.livro.edicao,
+      titulo: obterTituloLivro($scope.livro.id)
+    });
+  };
+
+  $scope.removerLivro = function (index) {
+    $scope.dados.livros.splice(index, 1);
+  };
+
+  Pessoa.obterTodasAsPessoas().then(function (result) {
+    $scope.pessoas = result.data;
+  });
+
+  Livro.obterTodosOsLivros().then(function (result) {
+    $scope.livros = result.data;
+  });
+
+  $scope.limparDados();
 });
