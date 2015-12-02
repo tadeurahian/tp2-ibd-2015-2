@@ -1,0 +1,66 @@
+<div ng-controller="CadastroLivroCtrl">
+  <div class="row column">
+    <h3 class="subheader">Cadastro de Livro</h3>
+  </div>
+  <div class="row">
+    <div class="small-4 columns">
+      <label>Título
+        <input type="text" ng-model="dados.titulo">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 columns">
+      <label>Categoria
+        <input type="text" maxlength="11" ng-model="dados.categoria">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 columns">
+      <label>Editora
+        <input type="text" ng-model="dados.editora">
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h6 class="subheader"> Autores </h6>
+      <div class="row">
+        <div class="small-4 columns">
+          <label> Nome
+            <input type="text" ng-model="autor.nome">
+          </label>
+        </div>
+        <div class="small-2 columns end">
+          <button type="button" class="success button add-button small" ng-click="adicionarAutor()"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          <table>
+            <thead>
+              <tr>
+                <th width="380">Nome</th>
+                <th>Excluir</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="autor in dados.autores">
+                <td>{{ autor.nome }}</td>
+                <td class="exclude-button">
+                  <button type="button" class="button alert small" ng-click="removerAutor($index)"><i class="fa fa-minus"></i></button>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-offset-8 small-4 columns">
+      <button type="button" class="alert button" ng-click="limparDados()">Cancelar</button>
+      <button type="button" class="success button" ng-click="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>

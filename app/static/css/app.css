@@ -5,3 +5,54 @@ body {
 .main-container {
   padding: 30px;
 }
+
+.ticker {
+	position: absolute;
+	right: 20px;
+	top: 70px;
+	height: 70px;
+	width: 400px;
+	opacity: 0.5;
+	color: white;
+	font-weight: bold;
+	border-radius: 10px;
+	display: flex;
+}
+
+.ticker.success {
+  background-color: green;
+}
+
+.ticker.error {
+  background-color: red;
+}
+
+.ticker:hover {
+	opacity: 0.7;
+}
+
+.ticker-close {
+  position: absolute;
+	right: 30px;
+	top: 70px;
+	color: white;
+	font-weight: bold;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.ticker span {
+	margin: auto;
+}
+
+.add-button {
+  margin-top: 26px;
+}
+
+.exclude-button {
+  display: flex;
+}
+
+.exclude-button button {
+  margin: auto;
+}

@@ -12,3 +12,39 @@ ibdApp.directive('ibdTopBar', function () {
     }
   };
 });
+
+ibdApp.directive('ibdTicker', function ($rootScope) {
+  'use strict';
+
+  return {
+    replace: false,
+    restrict: 'E',
+    templateUrl: 'static/partials/ticker.html',
+    scope: {
+      message: '=',
+      type: '=',
+      show: '='
+    },
+    link: function (scope, elm) {
+      var $ticker = $(elm).children('.ticker');
+
+      scope.esconderTicker = $rootScope.esconderTicker;
+
+      scope.$watch('show', function (newVal, oldVal) {
+        if(newVal === true) {
+          $ticker.fadeIn();
+        } else {
+          $ticker.fadeOut();
+        }
+
+        if(scope.type === 'success') {
+          $ticker.removeClass('error');
+          $ticker.addClass('success');
+        } else if(scope.type === 'error') {
+          $ticker.removeClass('success');
+          $ticker.addClass('error');
+        }
+      });
+    }
+  };
+});

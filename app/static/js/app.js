@@ -13,6 +13,11 @@ config(['$routeProvider', function($routeProvider) {
     controller: 'CadastroPessoaCtrl'
   });
 
+  $routeProvider.when('/cadastrar-livro', {
+    templateUrl: 'static/partials/cadastro-livro.html',
+    controller: 'CadastroLivroCtrl'
+  });
+
   $(document).ready(function () {
     $(document).foundation();
   });
