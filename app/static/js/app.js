@@ -1,6 +1,5 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 var ibdApp = angular.module('ibdApp', [
   'ngRoute',
   'ui.mask'
@@ -21,6 +20,16 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/doacao', {
     templateUrl: 'static/partials/doacao.html',
     controller: 'DoacaoCtrl'
+  });
+
+  $routeProvider.when('/aluguel', {
+    templateUrl: 'static/partials/aluguel.html',
+    controller: 'AluguelCtrl'
+  });
+
+  $routeProvider.when('/devolucao', {
+    templateUrl: 'static/partials/devolucao.html',
+    controller: 'DevolucaoCtrl'
   });
 
   $(document).ready(function () {

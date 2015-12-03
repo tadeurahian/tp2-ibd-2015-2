@@ -1,6 +1,6 @@
-<div ng-controller="DoacaoCtrl">
+<div ng-controller="AluguelCtrl">
   <div class="row column">
-    <h3 class="subheader">Doação de Livros</h3>
+    <h3 class="subheader">Aluguel de Livros</h3>
   </div>
   <div class="row">
     <div class="small-4 columns">
@@ -14,21 +14,30 @@
     </div>
   </div>
   <div class="row">
+    <div class="small-4 columns">
+      <label> Data de Devolução
+        <input type="text" ng-model="dados.data_devolucao" ui-mask="99/99/9999">
+      </label>
+    </div>
+  </div>
+  <div class="row">
     <div class="small-12 columns">
       <h6 class="subheader"> Livros </h6>
       <div class="row">
         <div class="small-4 columns">
           <label> Livro
             <select ng-model="livro.id">
-              <option ng-repeat="livro in livros" value="{{ livro.id_livro }}">
-                {{ livro.titulo }}
-              </option>
+              <option value="{{ livro.id_livro }}" ng-repeat="livro in livros"> {{ livro.titulo }} </option>
             </select>
           </label>
         </div>
-        <div class="small-2 columns">
-          <label> Edição
-            <input type="text" ng-model="livro.edicao">
+        <div class="small-4 columns">
+          <label> Edições Disponíveis
+            <select ng-model="livro.unidade">
+              <option ng-repeat="unidade in unidades" value="{{ unidade.id_unidade }}">
+                {{ unidade.edicao }}
+              </option>
+            </select>
           </label>
         </div>
         <div class="small-2 columns end">
@@ -41,14 +50,14 @@
             <thead>
               <tr>
                 <th width="350">Nome</th>
-                <th width="30"> Edição </th>
+                <th>Edição </th>
                 <th>Excluir</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="livro in dados.livros">
-                <td>{{ livro.titulo }}</td>
-                <td>{{ livro.edicao }}</td>
+              <tr ng-repeat="unidade in dados.unidades">
+                <td>{{ unidade.titulo }}</td>
+                <td>{{ unidade.edicao }}</td>
                 <td class="exclude-button">
                   <button type="button" class="button alert small" ng-click="removerLivro($index)"><i class="fa fa-minus"></i></button>
                 </td>

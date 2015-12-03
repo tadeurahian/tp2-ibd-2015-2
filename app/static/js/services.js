@@ -17,8 +17,12 @@ ibdApp.factory('ServicoBase', function ($http, $rootScope) {
       }, ServicoBase.tratarErro);
   };
 
-  ServicoBase.get = function (url, dados, sucesso) {
+  ServicoBase.get = function (url, dados) {
     return $http.get($rootScope.api + url, dados, {});
+  };
+
+  ServicoBase.put = function (url) {
+    return $http.put($rootScope.api + url, {}, {});
   };
 
   return ServicoBase;
@@ -61,9 +65,8 @@ ibdApp.factory('Livro', function (ServicoBase, $rootScope) {
     return ServicoBase.get('/book/all', {}, {});
   };
 
+  Livro.obterUnidadesLivro = function (id_livro) {
+    return ServicoBase.get('/book/available/' + id_livro, {}, {});
+  };
   return Livro;
-});
-
-ibdApp.factory('Unidade', function (ServicoBase, $rootScope) {
-  'use strit';
 });
